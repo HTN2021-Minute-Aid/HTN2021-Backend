@@ -1,0 +1,26 @@
+{
+  "name": "htn2021-backend",
+  "version": "1.0.0",
+  "description": "Backend for the minute-aid HTN2020++ project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./Backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HTN2021-Minute-Aid/HTN2021-Backend.git"
+  },
+  "author": "Nathan Wong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HTN2021-Minute-Aid/HTN2021-Backend/issues"
+  },
+  "homepage": "https://github.com/HTN2021-Minute-Aid/HTN2021-Backend#readme",
+  "dependencies": {
+    "@azure/ai-text-analytics": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.4.2"
+  }
+}
