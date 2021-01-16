@@ -1,1 +1,1 @@
-worker: node ./Backend/index.js
+worker: npm start
