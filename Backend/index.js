@@ -16,12 +16,12 @@ app.delete("/transcripts/delete", async function(req, res){
     res.status(response.status).send(response.resObj)
 })
 
-app.get("/users/transcripts", async function(req, res){
+app.put("/users/transcripts", async function(req, res){
     const response = await FirebaseHandler.getTranscriptsFromUser(req)
     res.status(response.status).send(response.resObj)
 })
 
-app.get("/users/transcripts/content", async function(req, res){
+app.put("/users/transcripts/content", async function(req, res){
     const response = await FirebaseHandler.getTranscriptContent(req)
     res.status(response.status).send(response.resObj)
 })
