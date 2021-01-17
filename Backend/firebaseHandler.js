@@ -3,6 +3,7 @@ const admin = require('firebase-admin')
 const AzureHandler = require('./azureHandler')
 
 //init firebase/store
+
 const serviceAcc = {
     "type": process.env.FS_TYPE,
     "project_id": process.env.FS_PROJECT_ID,
@@ -25,19 +26,23 @@ const collections = {
 
 class FirebaseHandler {
      //content, title, ownerID
+     //name, content is the object in the content thing
     static addTranscript = async(req) => {
         const response = await this.dbInteraction(async req => {
-            const keywords = await AzureHandler.extractKeyPhrases(req.body.content)
 
-           await firestore.collection(collections.content).add({
-                content: req.body.content,
-                keywords: keywords
-            }).then(async docRef => {
-                await firestore.collection(collections.transcripts).add({
-                    title: req.body.title,
-                    date: admin.firestore.Timestamp.now(),
-                    contentID: docRef.id,
-                    ownerID: req.body.ownerID
+            //reduce the content and leave out names for Azure processing
+            let allContent = req.body.content.reduce((acc, cur) => acc + " " + cur.content)
+            const keywords = await AzureHandler.extractKeyPhrases(allContent)
+
+            await firestore.collection(collections.content).add({
+                    content: req.body.content,
+                    keywords: keywords
+                }).then(async docRef => {
+                    await firestore.collection(collections.transcripts).add({
+                        title: req.body.title,
+                        date: admin.firestore.Timestamp.now(),
+                        contentID: docRef.id,
+                        ownerID: req.body.ownerID
                 })
             })
 
