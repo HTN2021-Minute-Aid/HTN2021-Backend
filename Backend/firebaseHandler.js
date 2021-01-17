@@ -60,7 +60,7 @@ class FirebaseHandler {
         const response = await this.dbInteraction(async req => {
             const docRef = await firestore.collection(collections.transcripts).doc(req.body.transcriptID).get()
             
-            await firestore.collection(collections.content).doc(docRef.get('contentID')).delete()
+            await firestore.collection(collections.content).doc(docRef.data['contentID']).delete()
             await firestore.collection(collections.transcripts).doc(req.body.transcriptID).delete()
 
             return {}
