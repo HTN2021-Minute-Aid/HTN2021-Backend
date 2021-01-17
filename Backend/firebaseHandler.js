@@ -29,7 +29,10 @@ class FirebaseHandler {
      //name, content is the object in the content thing
     static addTranscript = async(req) => {
         const response = await this.dbInteraction(async req => {
-
+            if(req.body.content.length <= 0){
+                throw new Error("No words in transcript")
+            }
+            
             //reduce the content and leave out names for Azure processing
             let concat = ""
             req.body.content.forEach(capt => concat += " " + capt.content)
