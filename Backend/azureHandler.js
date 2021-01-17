@@ -1,3 +1,4 @@
+require('dotenv').config();
 const {TextAnalyticsClient, AzureKeyCredential} = require('@azure/ai-text-analytics')
 
 const key = process.env.AZURE_TA_KEY
