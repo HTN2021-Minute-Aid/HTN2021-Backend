@@ -31,8 +31,9 @@ class FirebaseHandler {
         const response = await this.dbInteraction(async req => {
 
             //reduce the content and leave out names for Azure processing
-            let allContent = req.body.content.reduce((acc, cur) => acc + " " + cur.content)
-            const keywords = await AzureHandler.extractKeyPhrases(allContent)
+            let concat = ""
+            req.body.content.forEach(capt => concat += " " + capt.content)
+            const keywords = await AzureHandler.extractKeyPhrases(concat)
 
             await firestore.collection(collections.content).add({
                     content: req.body.content,

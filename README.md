@@ -16,4 +16,7 @@ Backend for our HTN2020++ project
 - <b>/users/transcripts/content</b> (returns content of the given transcript)
    - contentID = string id of content document
    
-All objects passed in should be in JSON format
+All objects passed in should be in JSON format.
+
+Response code 200 - Success
+Response code 500 - Internal Server Error
