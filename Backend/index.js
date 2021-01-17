@@ -20,7 +20,7 @@ app.delete("/transcripts/delete", async function(req, res){
 
 app.post("/users/transcripts", async function(req, res){
 
-    console.log(req.body)
+    console.log(req)
 
     const response = await FirebaseHandler.getTranscriptsFromUser(req)
     res.status(response.status).send(response.resObj)
