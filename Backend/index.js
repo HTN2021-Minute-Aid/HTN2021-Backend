@@ -22,9 +22,6 @@ app.delete("/transcripts/delete", async function(req, res){
 })
 
 app.post("/users/transcripts", async function(req, res){
-
-    console.log(req)
-
     const response = await FirebaseHandler.getTranscriptsFromUser(req)
     res.status(response.status).send(response.resObj)
 })
@@ -37,24 +34,3 @@ app.post("/users/transcripts/content", async function(req, res){
 app.listen(PORT, function() {
     console.log(`Listening on port ${PORT}`)
 })
-
-// const fetch = require('node-fetch')
-
-// const asyncFunc = async() => {
-//     try{
-//         const res = await fetch("http://localhost:3000/users/transcripts", {
-//             method: "POST",
-//             mode: "no-cors",
-//             headers: {
-//             "Accept": "application/json",
-//             "Content-Type": "application/json"
-//             },
-
-//             body: JSON.stringify({userID: "2SS0lCXwZhPvWv1nnRpem7Te8dg1"})
-//         })
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
-
-// asyncFunc()
