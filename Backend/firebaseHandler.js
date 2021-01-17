@@ -81,7 +81,7 @@ class FirebaseHandler {
             let transcripts = []
 
             collectionSnapshot.forEach(doc => {
-                transcripts.push(doc.data())
+                transcripts.push({transcriptID: doc.id, ...doc.data()})
             })
 
             return ({
