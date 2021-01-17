@@ -58,6 +58,8 @@ class FirebaseHandler {
     //transcriptID
     static removeTranscript = async(req) => {
         const response = await this.dbInteraction(async req => {
+            console.log(req.body.transcriptID)
+
             const docRef = await firestore.collection(collections.transcripts).doc(req.body.transcriptID).get()
 
             console.log(docRef.data())

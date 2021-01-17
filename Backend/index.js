@@ -16,7 +16,7 @@ app.post("/transcripts/add", async function(req, res){
     res.status(response.status).send(response.resObj)
 })
 
-app.delete("/transcripts/delete", async function(req, res){
+app.post("/transcripts/delete", async function(req, res){
     const response = await FirebaseHandler.removeTranscript(req)
     res.status(response.status).send(response.resObj)
 })
