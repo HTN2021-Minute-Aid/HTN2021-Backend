@@ -103,7 +103,7 @@ class FirebaseHandler {
             return {
                 status:  500,
                 resObj:{
-                    message: 'error'
+                    message: err
                 }
             }
         }
